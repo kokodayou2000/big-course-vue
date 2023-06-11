@@ -3,7 +3,7 @@
 
 
 import {ref,} from "vue";
-import {getAllDocsById} from "@/apis";
+import {getAllDocsById, getOneDocByDocID} from "@/apis";
 
 // const json2md = require("json2md")
 // let previewData = json2md(
@@ -53,10 +53,8 @@ const previewData = ref('')
 const rows = ref([])
 
 async function init(id : string) {
-  let res = await getAllDocsById(id)
-  console.log(res.data)
-  console.log(res.data.rows[0].content)
-  previewData.value = res.data.rows[0].content
+  let res = await getOneDocByDocID(id)
+  previewData.value = res.data.content
 }
 init("1")
 

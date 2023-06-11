@@ -8,8 +8,8 @@
 
   <el-tabs :tab-position="tabPosition" style="height: 500px;"  class="demo-tabs" >
 
-    <el-tab-pane v-for="v in docLists" :key="v" :label="v" >
-      <DocView :preview-data="v" />
+    <el-tab-pane v-for="v in docLists" :key="v" :label="v.title" >
+      <DocView :preview-data="v.content" />
     </el-tab-pane>
 
   </el-tabs>
@@ -18,16 +18,18 @@
 import { ref } from 'vue'
 import DocView from "@/components/DocView.vue";
 import {getAllDocsById, getAllDocsByUserId} from "@/apis";
+import {IDoc} from "@/typing/doc";
 
 const tabPosition = ref('right')
 
-const docLists = ref([''])
+const docLists = ref([{} ] as IDoc[])
 
 async function init(){
   let d = await getAllDocsByUserId("1")
   for (let i = 0; i < d.data.rows.length; i++) {
-    docLists.value.push(d.data.rows[i].title)
+    docLists.value.push(d.data.rows[i])
   }
+  console.log(docLists.value)
 }
 
 init()

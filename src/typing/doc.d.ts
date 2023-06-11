@@ -24,3 +24,8 @@ export interface IUpdate{
     content:string
 }
 
+export interface IResDoc{
+    msg: string
+    code: number
+    data: IDoc
+}

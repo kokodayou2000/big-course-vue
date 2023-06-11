@@ -1,5 +1,5 @@
 import instance from "@/apis/base";
-import {IDoc, IRes, ITable, IUpdate} from "@/typing/doc";
+import {IDoc, IRes, IResDoc, ITable, IUpdate} from "@/typing/doc";
 
 
 export const pageQuery = (id:string)=>{
@@ -31,6 +31,11 @@ export const getAllDocsById = (id :string) =>{
     })
 }
 
+export const getOneDocByDocID = (id:string) =>{
+    return instance.get<IResDoc,IResDoc>('/doc/getOneDocByDocID',{
+        params:{id}
+    })
+}
 
 
 
