@@ -2,7 +2,8 @@ import {createMemoryHistory, createRouter, createWebHashHistory, RouteRecordRaw}
 import Layout from '../layout/index.vue'
 import AboutView from "@/views/about/AboutView.vue";
 import EditDocView from "@/views/document/EditDocView.vue";
-import ReviewDocView from "@/views/document/ReviewDocView.vue";
+import ReviewDocView from "@/views/document/RevDocListView.vue";
+import MusicPlayView from "@/views/play/MusicPlayView.vue";
 
 
 
@@ -28,6 +29,10 @@ const routes: Array<RouteRecordRaw> = [
         path: '/viewDoc',
         name: '查看文档',
         component: ReviewDocView
+      },{
+        path: '/music',
+        name: '音乐',
+        component: MusicPlayView
       }
 
     ]

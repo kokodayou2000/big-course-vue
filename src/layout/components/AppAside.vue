@@ -34,10 +34,14 @@
 
     </el-sub-menu>
 
-    <el-menu-item index="4">
-      <el-icon><icon-menu /></el-icon>
-      <template #title>娱乐</template>
-    </el-menu-item>
+
+    <el-sub-menu index="4">
+      <template #title>
+        <el-icon><icon-menu /></el-icon>
+        <span>娱乐</span>
+      </template>
+      <el-menu-item index="4-1" @click="jumpTomMusic">音乐</el-menu-item>
+    </el-sub-menu>
 
   </el-menu>
 </template>
@@ -57,6 +61,7 @@ const isCollapse = ref(true)
 const jump = ()=>{
   console.log("jump")
   Router.push('/about')
+  console.log(Router.getRoutes())
 }
 const jumpToView = ()=>{
   console.log("viewDoc ")
@@ -65,6 +70,11 @@ const jumpToView = ()=>{
 const jumpToEdit = ()=>{
   console.log("editDoc ")
   Router.push('/editDoc')
+}
+
+const  jumpTomMusic = ()=>{
+  console.log("music ")
+  Router.push('/music')
 }
 
 const handleOpen = (key: string, keyPath: string[]) => {
