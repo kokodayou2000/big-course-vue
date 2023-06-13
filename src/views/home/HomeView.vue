@@ -1,17 +1,39 @@
 <script setup lang="ts">
+import {ref} from "vue";
+import {useCounterStore} from "@/store";
+import Foo from "@/components/Foo.vue";
+import Bar from "@/components/Bar.vue";
 
-import {Ship} from "@element-plus/icons-vue";
+const store = useCounterStore()
+
+const flag  = ref(false)
+
+
+setInterval(()=>{
+  console.log("setInterval")
+  store.increment()
+},1000)
+
+
 </script>
 
 <template>
-<div class="home">
-  <h1>home</h1>
-  <el-icon>
-    <Ship />
-  </el-icon>
-</div>
+  <button @click="flag =!flag">点击</button>
+  <Transition name="fade">
+    <div v-if="flag"> <Bar /></div>
+    <div v-else><Foo /> </div>
+  </Transition>
 </template>
 
-<style scoped>
 
+<style scoped lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
